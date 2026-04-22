@@ -9,9 +9,42 @@
 <body>
     <div class="container">
         <h1>Documents</h1>
+        <section class="search-panel">
+            <form id="search-form" class="search-form">
+                <label class="search-label" for="query-input">Search documents</label>
+                <div class="search-controls">
+                    <input
+                        id="query-input"
+                        name="query"
+                        type="text"
+                        placeholder="Try: space, music, bread, python"
+                        autocomplete="off"
+                    >
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+            <div id="search-status" class="search-status">Enter a query to see the top 5 similar documents.</div>
+        </section>
+
+        <section class="results-section">
+            <div class="section-heading">
+                <h2>Search Results</h2>
+                <span class="section-subtitle">Top 5 matches</span>
+            </div>
+            <div id="search-results" class="documents-grid empty-state">
+                <p class="empty-message">No search results yet.</p>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="section-heading">
+                <h2>All Documents</h2>
+                <span class="section-subtitle">Current collection</span>
+            </div>
         <div id="documents-container" class="documents-grid">
             <p class="loading">Loading documents...</p>
         </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>

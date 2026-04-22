@@ -49,7 +49,7 @@ collection.add(
 # print(results["ids"])
 
 results = collection.query(query_texts = ["What going on in science?"], n_results = 5)
-print(results["ids"][0])
+print(results)
 
 
 

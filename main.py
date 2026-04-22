@@ -57,10 +57,23 @@ def get_documents():
     my_list = []
     for i in range(15):
         my_dict = {"id": results["ids"][i],
-                   "document": results["documents"][i]}
+                   "document": results["documents"][i]
+                   }
         my_list.append(my_dict)
     return my_list
 
+@app.get("/search")
+def get_search(query: str):
+    results = collection.query(query_texts = [query], n_results = 5)
+    my_list = []
+    for i in range(5):
+        my_dict = {
+                   "id": results["ids"][0][i],
+                   "document": results["documents"][0][i],
+                   "distance": results["distances"][0][i]
+        }
+        my_list.append(my_dict)
+    return my_list
 
 
 
