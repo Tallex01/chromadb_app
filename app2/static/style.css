@@ -1,0 +1,160 @@
+:root {
+	--bg: #f4f1ea;
+	--panel: #fffdf9;
+	--text: #1f1f1f;
+	--muted: #5d5d5d;
+	--accent: #b44a1e;
+	--accent-dark: #883918;
+	--border: #dfd6c7;
+	--error: #9b2226;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--text);
+	background: radial-gradient(circle at top left, #fbeed9 0%, var(--bg) 42%, #efe8db 100%);
+}
+
+.layout {
+	max-width: 1200px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+}
+
+.panel {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 1.25rem;
+	box-shadow: 0 10px 28px rgba(76, 56, 34, 0.08);
+}
+
+h1,
+h2,
+h3 {
+	margin-top: 0;
+}
+
+p {
+	color: var(--muted);
+}
+
+label {
+	display: block;
+	margin-bottom: 0.35rem;
+	font-weight: 600;
+}
+
+textarea,
+input {
+	width: 100%;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 0.65rem 0.75rem;
+	font: inherit;
+	background: #fff;
+}
+
+textarea {
+	resize: vertical;
+	min-height: 170px;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.75rem;
+	margin-top: 0.8rem;
+}
+
+button {
+	margin-top: 1rem;
+	border: none;
+	border-radius: 8px;
+	background: var(--accent);
+	color: #fff;
+	padding: 0.75rem 1rem;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+button:hover {
+	background: var(--accent-dark);
+}
+
+button:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.status {
+	min-height: 1.4em;
+	margin-top: 0.8rem;
+	font-weight: 600;
+}
+
+.status.error {
+	color: var(--error);
+}
+
+.results {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.results.empty {
+	color: var(--muted);
+}
+
+.chunk-card {
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 0.8rem;
+	background: #fff;
+}
+
+.chunk-card header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.6rem;
+	margin-bottom: 0.4rem;
+}
+
+.chunk-card h3 {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.chunk-card span {
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+.chunk-card pre {
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-word;
+	font-family: Consolas, Monaco, "Courier New", monospace;
+	font-size: 0.92rem;
+	line-height: 1.45;
+}
+
+@media (min-width: 900px) {
+	.layout {
+		grid-template-columns: minmax(320px, 420px) 1fr;
+	}
+
+	.row {
+		grid-template-columns: 1fr 1fr;
+	}
+}
