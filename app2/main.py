@@ -26,6 +26,4 @@ def chunk(request: ChunkRequest):
         chunk_list.append(dictionary)
     return chunk_list
 
-
-
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

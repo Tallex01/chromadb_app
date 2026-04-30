@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pydantic import BaseModel
 import chromadb
+import uuid
 
 app = FastAPI()
 
@@ -14,28 +15,36 @@ class ChunkRequest(BaseModel):
 chroma_client = chromadb.Client()
 collection = chroma_client.create_collection(name = "documents")
 
-collection.add(
-    ids = [],
-    documents = []
-)
-
-@app.post('/chunk')
+@app.post("/chunk")
 def chunk(request: ChunkRequest):
-
-    my_list = []
+    with open("sample.txt") as f:
+        text = f.read()
     splitter = RecursiveCharacterTextSplitter(
         chunk_size = 300,
         chunk_overlap = 50
         )
-    result = splitter.split_text(request.text)
-    for chunk in result:
-        my_list.append({
-            "Chunk": chunk,
-            "Length": len(chunk)
-        })
-    return my_list
+    chunks = splitter.split_text(text)
+    # chunk_list = []
+    # for chunk in chunks:
+    #     dictionary = {
+    #         "chunk": chunk, 
+    #         "len": len(chunk)
+    #     }
+    #     chunk_list.append(dictionary)
+    # return chunk_list
 
+    ids = []
+    documents = []
 
+    for chunk in chunks:
+        ids.append(str(uuid.uuid4()))
+        documents.append(chunk)
+
+    collection.add(
+        ids=ids,
+        documents=documents
+    )
+    return collection.get()
 
 
 #3rd app, load same article (lighthouse document, or any document I want (a specific doc, hardcoded)), 

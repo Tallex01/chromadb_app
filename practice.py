@@ -45,11 +45,11 @@ collection.add(
     ]
 )
 
-# results = collection.get()
-# print(results["ids"])
+results = collection.get()
+print(results["documents"])
 
-results = collection.query(query_texts = ["What going on in science?"], n_results = 5)
-print(results)
+# results = collection.query(query_texts = ["What going on in science?"], n_results = 5)
+# print(results)
 
 
 

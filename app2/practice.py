@@ -9,5 +9,5 @@ splitter = RecursiveCharacterTextSplitter(
 )
 
 result = splitter.split_text(text)
-print(result[2])
+print(result[0])
 
