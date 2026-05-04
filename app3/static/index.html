@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Article Chunk Search</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main class="app-shell">
+			<header class="hero">
+				<p class="eyebrow">FastAPI + ChromaDB</p>
+				<h1>Semantic Search Over Chunked Article</h1>
+				<p class="subtitle">
+					Ask a question and get the top 5 most relevant chunks from the hardcoded document.
+				</p>
+			</header>
+
+			<section class="search-panel" aria-label="Search controls">
+				<form id="searchForm" class="search-form">
+					<label for="queryInput">Your Query</label>
+					<div class="input-row">
+						<input
+							id="queryInput"
+							name="query"
+							type="text"
+							placeholder="e.g. What does the article say about lighthouse maintenance?"
+							required
+						/>
+						<button id="searchButton" type="submit">Find Top 5</button>
+					</div>
+				</form>
+				<p id="status" class="status" aria-live="polite"></p>
+			</section>
+
+			<section class="results-panel" aria-label="Search results">
+				<h2>Best Matching Chunks</h2>
+				<div id="results" class="results-grid"></div>
+			</section>
+		</main>
+
+		<template id="resultTemplate">
+			<article class="result-card">
+				<div class="card-meta">
+					<span class="chip id-chip"></span>
+					<span class="chip score-chip"></span>
+				</div>
+				<p class="chunk-text"></p>
+			</article>
+		</template>
+
+		<script src="script.js"></script>
+	</body>
+</html>
